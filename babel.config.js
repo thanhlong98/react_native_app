@@ -23,7 +23,8 @@ module.exports = {
           '@icons': './src/assets/icons',
           '@constants': './src/constants',
           '@styles': './src/styles',
-          '@store': './src/stores'
+          '@store': './src/stores',
+          '@utils': './src/utils'
         }
       }
     ]

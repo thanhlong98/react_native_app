@@ -1,13 +1,16 @@
-import { _navigation } from '@constants'
 import { createStackNavigator } from '@react-navigation/stack'
 import SplashScreen from '@screens/splash'
+import { RootParamList } from '@utils'
 import React, { useEffect, useState } from 'react'
-import TabNavigator from './TabNavigator'
+import AppNavigator from './App'
+import AuthNavigator from './AuthNavigator'
 
-const Stack = createStackNavigator()
+const RootStack = createStackNavigator<RootParamList>()
 
 const Navigation = () => {
   const [loading, setLoading] = useState(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [token, setToken] = useState('asd')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,18 +22,21 @@ const Navigation = () => {
   }, [])
 
   return (
-    <Stack.Navigator
+    <RootStack.Navigator
       headerMode='none'
       screenOptions={{
         animationTypeForReplace: 'push'
       }}
+      initialRouteName='Splash'
     >
       {loading ? (
-        <Stack.Screen name={_navigation.SPLASH} component={SplashScreen} />
+        <RootStack.Screen name='Splash' component={SplashScreen} />
+      ) : token ? (
+        <RootStack.Screen name='App' component={AppNavigator} />
       ) : (
-        <Stack.Screen name={_navigation.APP} component={TabNavigator} />
+        <RootStack.Screen name='Auth' component={AuthNavigator} />
       )}
-    </Stack.Navigator>
+    </RootStack.Navigator>
   )
 }
 

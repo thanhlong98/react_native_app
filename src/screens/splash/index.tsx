@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, View, StyleSheet } from 'react-native'
 
-const SplashScreen = () => {
+const SplashScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require('@images/logo.png')} />
