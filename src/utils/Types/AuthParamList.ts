@@ -1,12 +1,13 @@
+import { _navigation } from '@constants'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-export type AuthParamList = {
-  SignIn: undefined
-  SignUp: undefined
+export type AuthStackParamList = {
+  [_navigation.SIGN_IN]: undefined
+  [_navigation.SIGN_UP]: undefined
 }
 
-export type AuthNavProps<T extends keyof AuthParamList> = {
-  navigation: StackNavigationProp<AuthParamList, T>
-  route: RouteProp<AuthParamList, T>
+export type AuthNavProps<T extends keyof AuthStackParamList> = {
+  navigation: StackNavigationProp<AuthStackParamList, T>
+  route: RouteProp<AuthStackParamList, T>
 }

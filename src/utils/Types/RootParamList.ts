@@ -1,9 +1,13 @@
+import { NestedNavigatorParams } from './index'
+import { _navigation } from '@constants'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { AppStackParamList } from './AppParamList'
+import { AuthStackParamList } from './AuthParamList'
 export type RootParamList = {
-  Splash: undefined
-  App: undefined
-  Auth: undefined
+  [_navigation.SPLASH]: undefined
+  [_navigation.APP]: NestedNavigatorParams<AppStackParamList>
+  [_navigation.AUTH]: NestedNavigatorParams<AuthStackParamList>
 }
 
 export type RootStackNavProps<T extends keyof RootParamList> = {

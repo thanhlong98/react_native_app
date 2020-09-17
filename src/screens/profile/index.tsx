@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const EditPostScreen: React.FC = () => {
+const ProfileScreen: React.FC = () => {
   return (
     <View>
-      <Text>Post Screen</Text>
+      <Text>Profile Screen</Text>
     </View>
   )
 }
 
-export default EditPostScreen
+export default ProfileScreen

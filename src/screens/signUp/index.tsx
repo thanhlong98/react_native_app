@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import { AuthNavProps } from 'src/utils'
+import { Text, View } from 'react-native'
 
-const SignUpScreen: React.FC<AuthNavProps<'SignUp'>> = () => {
+const SignUpScreen: React.FC = () => {
   return (
     <View>
       <Text>Sign Up</Text>

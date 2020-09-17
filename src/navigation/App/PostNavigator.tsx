@@ -1,16 +1,32 @@
-import { createStackNavigator } from '@react-navigation/stack'
-import EditPostScreen from '@screens/editPost'
+import { _navigation } from '@constants'
+import {
+  CardStyleInterpolators,
+  createStackNavigator
+} from '@react-navigation/stack'
 import DetailPostScreen from '@screens/detailPost'
-import { PostParamList } from '@utils'
+import EditPostScreen from '@screens/editPost'
+import { PostStackParamList } from '@utils'
 import React from 'react'
 
-const PostStack = createStackNavigator<PostParamList>()
+const PostStack = createStackNavigator<PostStackParamList>()
 
 const PostNavigator: React.FC = () => {
   return (
-    <PostStack.Navigator>
-      <PostStack.Screen name='DetailPost' component={DetailPostScreen} />
-      <PostStack.Screen name='EditPost' component={EditPostScreen} />
+    <PostStack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+      }}
+    >
+      <PostStack.Screen
+        name={_navigation.DETAIL_POST}
+        component={DetailPostScreen}
+      />
+      <PostStack.Screen
+        name={_navigation.EDIT_POST}
+        component={EditPostScreen}
+      />
     </PostStack.Navigator>
   )
 }

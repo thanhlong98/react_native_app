@@ -1,11 +1,11 @@
+import { _navigation } from '@constants'
 import { createStackNavigator } from '@react-navigation/stack'
 import SplashScreen from '@screens/splash'
-import { RootParamList } from '@utils'
 import React, { useEffect, useState } from 'react'
 import AppNavigator from './App'
-import AuthNavigator from './AuthNavigator'
+import AuthNavigator from './Auth'
 
-const RootStack = createStackNavigator<RootParamList>()
+const RootStack = createStackNavigator()
 
 const Navigation = () => {
   const [loading, setLoading] = useState(true)
@@ -24,17 +24,14 @@ const Navigation = () => {
   return (
     <RootStack.Navigator
       headerMode='none'
-      screenOptions={{
-        animationTypeForReplace: 'push'
-      }}
-      initialRouteName='Splash'
+      initialRouteName={_navigation.SPLASH}
     >
       {loading ? (
-        <RootStack.Screen name='Splash' component={SplashScreen} />
+        <RootStack.Screen name={_navigation.SPLASH} component={SplashScreen} />
       ) : token ? (
-        <RootStack.Screen name='App' component={AppNavigator} />
+        <RootStack.Screen name={_navigation.APP} component={AppNavigator} />
       ) : (
-        <RootStack.Screen name='Auth' component={AuthNavigator} />
+        <RootStack.Screen name={_navigation.AUTH} component={AuthNavigator} />
       )}
     </RootStack.Navigator>
   )
